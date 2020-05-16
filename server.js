@@ -2,7 +2,7 @@ const express = require('express')
 const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
-const spawn = require('child_process').spawn
+const spawnSync = require('child_process').spawnSync
 
 const storage = multer.diskStorage({
     destination: './images/',
@@ -81,10 +81,7 @@ app.get('/style',(req,res)=>{
         if(err) throw err
     })
 
-    const process = spawn('python',['./scripts/model.py'])
-    process.stdout.on('data',(data)=>{
-        console.log(data.toString())
-    })
+    const r = spawnSync('python',['./scripts/model.py'])
 
     res.render('result')
 })
