@@ -130,8 +130,8 @@ script_dir = path.dirname(path.abspath(__file__))
 two_up =  path.abspath(path.join(__file__ ,"../.."))
 fin = path.abspath(path.join(two_up,"images"))
 
-content = Image.open(path.join(script_dir, 'content.jpg'))
-style = Image.open(path.join(script_dir, 'style.jpg'))
+content = path.join(script_dir, 'content.jpg')
+style = path.join(script_dir, 'style.jpg')
 
 best_image = training_loop(content,style)
 
